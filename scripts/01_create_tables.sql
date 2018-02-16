@@ -1,20 +1,20 @@
 DROP    SCHEMA IF EXISTS gf CASCADE;
 CREATE  SCHEMA gf;
 
-CREATE TABLE gf.clients {
+CREATE TABLE gf.clients (
   client_id SERIAL PRIMARY KEY,
   name TEXT,
   lat NUMERIC, -- TODO: does number need a precision? ex. 5 ?
   lon NUMERIC
-}
+);
 
 CREATE TYPE SENSOR_TYPE AS ENUM ('temp', 'humidity', 'pH');
 
-CREATE TABLE gf.sensors {
+CREATE TABLE gf.sensors (
   sensor_id SERIAL PRIMARY KEY,
   owner INT NULL REFERENCES gf.clients(client_id) ON DELETE CASCADE,
   type SENSOR_TYPE
-}
+);
 
 CREATE TABLE gf.records (
   time    TIMESTAMPTZ       NOT NULL,
