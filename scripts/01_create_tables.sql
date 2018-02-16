@@ -23,7 +23,7 @@ CREATE TABLE gf.records (
 );
 
 -- This creates a hypertable that is partitioned by time using the values in the `time` column.
-SELECT create_hypertable('conditions', 'time');
+SELECT create_hypertable('gf.records', 'time');
 
 -- OR you can additionally partition the data on another
 --   dimension (what we call 'space partitioning').
